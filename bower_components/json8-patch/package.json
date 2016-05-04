@@ -1,0 +1,87 @@
+{
+  "_args": [
+    [
+      "json8-patch",
+      "/home/caohanyang/2015First/Benchmark/json_benchmark_real"
+    ]
+  ],
+  "_from": "json8-patch@latest",
+  "_id": "json8-patch@0.3.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/json8-patch",
+  "_nodeVersion": "5.0.0",
+  "_npmUser": {
+    "email": "sonny@fastmail.net",
+    "name": "sonny"
+  },
+  "_npmVersion": "3.3.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "json8-patch",
+    "raw": "json8-patch",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/json8-patch/-/json8-patch-0.3.3.tgz",
+  "_shasum": "90503b9d790864499b79cab26724e64beba91aa8",
+  "_shrinkwrap": null,
+  "_spec": "json8-patch",
+  "_where": "/home/caohanyang/2015First/Benchmark/json_benchmark_real",
+  "author": {
+    "email": "sonny@fastmail.net",
+    "name": "Sonny Piers"
+  },
+  "bugs": {
+    "url": "https://github.com/JSON8/patch/issues"
+  },
+  "dependencies": {
+    "json8": "^0.7.0",
+    "json8-pointer": "^0.4.0"
+  },
+  "description": "JSON Patch implementation for JavaScript",
+  "devDependencies": {
+    "eslint": "^0.24.1",
+    "json-patch-test-suite": "^1.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "90503b9d790864499b79cab26724e64beba91aa8",
+    "tarball": "https://registry.npmjs.org/json8-patch/-/json8-patch-0.3.3.tgz"
+  },
+  "gitHead": "d856ab1539a740889f741bd230dd14d43935fb55",
+  "homepage": "https://github.com/JSON8/patch",
+  "keywords": [
+    "JSON",
+    "patch",
+    "diff"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "sonny@fastmail.net",
+      "name": "sonny"
+    }
+  ],
+  "name": "json8-patch",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/json8/patch.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "preversion": "npm run webify && npm test",
+    "test": "npm run unit && npm run lint && npm run webify",
+    "unit": "mocha --compilers js:babel/register --recursive test/",
+    "webify": "browserify -s JSON8Patch index.js -o JSON8Patch.js"
+  },
+  "version": "0.3.3"
+}

@@ -1,0 +1,40 @@
+{
+  "name": "rfc6902",
+  "description": "Complete implementation of RFC6902 (patch and diff)",
+  "main": "./rfc6902.js",
+  "authors": [
+    "Christopher Brown <io@henrian.com> (http://henrian.com)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "json",
+    "patch",
+    "diff",
+    "rfc6902"
+  ],
+  "homepage": "https://github.com/chbrown/rfc6902",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "CVS",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "version": "1.1.3",
+  "_release": "1.1.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.3",
+    "commit": "e71f715ed6b0933af5350a3112c11d90508d45ae"
+  },
+  "_source": "https://github.com/chbrown/rfc6902.git",
+  "_target": "~1.1.3",
+  "_originalSource": "rfc6902",
+  "_direct": true
+}

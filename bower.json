@@ -1,0 +1,10 @@
+{
+  "name": "stockmarket-angular",
+  "version": "1.0.1",
+  "homepage": "https://github.com/streamdataio/streamdataio-js",
+  "authors": [
+    "caohanyang <caohanyang007@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true
+}
