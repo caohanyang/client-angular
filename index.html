@@ -31,19 +31,67 @@
 
             <form class="form-horizontal" name="streamdataForm" style="margin-bottom: 30px;">
                 <div class="form-group">
-                    <label for="inputUrl" class="col-sm-3 control-label">URL</label>
+                  <label for="inputUrl" class="col-sm-3 control-label">Select URL</label>
+                  <div class="col-sm-8">
+                    <select ng-model="controller.urls" ng-options="a.name for a in urlList">
+                      <option value="">Select your url</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputUrl" class="col-sm-3 control-label">Request URL</label>
                     <div class="col-sm-8">
-                        <input id="inputUrl" class="form-control" placeholder="Your JSON API Url" type="url" ng-model="controller.url" required>
+                        <input id="inputUrl" class="form-control" placeholder="Your JSON API Url" type="url" ng-model="controller.url" disabled required>
                     </div>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="inputPublicKey" class="col-sm-3 control-label">Application token</label>
+                <div class="form-group" ng-show="controller.urls.name=='Twitter'">
+                    <label for="consumerKey" class="col-sm-3 control-label">Consumer key</label>
                     <div class="col-sm-8">
-                        <input id="inputPublicKey" class="form-control" placeholder="Your App Token" type="text" ng-model="controller.token" required>
+                        <input id="consumerKey" class="form-control" placeholder="Your Consumer key" type="text" ng-model="controller.consumerKey" required>
                     </div>
-                    <img src="img/info.png" class="col-sm-1" style="width: inherit; margin-top: 5px; padding-left: 0px;"
-                         ng-model="controller.popupPk.content" popup="controller.popupPk.options"/>
-                </div> -->
+                </div>
+                <div class="form-group" ng-show="controller.urls.name=='Twitter'">
+                    <label for="consumerSecret" class="col-sm-3 control-label">Consumer secret</label>
+                    <div class="col-sm-8">
+                        <input id="consumerSecret" class="form-control" placeholder="Your Consumer secret" type="text" ng-model="controller.consumerSecret" required>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="controller.urls.name=='Twitter'">
+                    <label for="accessToken" class="col-sm-3 control-label">Access token</label>
+                    <div class="col-sm-8">
+                        <input id="accessToken" class="form-control" placeholder="Your Access token" type="text" ng-model="controller.accessToken" required>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="controller.urls.name=='Twitter'">
+                    <label for="accessTokenSecret" class="col-sm-3 control-label">Access token secret</label>
+                    <div class="col-sm-8">
+                        <input id="accessTokenSecret" class="form-control" placeholder="Your Access token secret" type="text" ng-model="controller.accessTokenSecret" required>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-show="controller.urls.name=='Xignite'">
+                    <label for="xigniteToken" class="col-sm-3 control-label">Xignite note</label>
+                    <div class="col-sm-8">
+                        <p>Please install <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en" target="_blank">Chrome extension</a> first </p>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-show="controller.urls.name=='Xignite'">
+                    <label for="xigniteToken" class="col-sm-3 control-label">API token</label>
+                    <div class="col-sm-8">
+                        <input id="xigniteToken" class="form-control" placeholder="Your API Token" type="text" ng-model="controller.xigniteToken" required>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group" ng-show="controller.urls.name=='nyTimes'">
+                    <label for="nyKey" class="col-sm-3 control-label">API Key</label>
+                    <div class="col-sm-8">
+                        <input id="nyKey" class="form-control" placeholder="Your API Key" type="text" ng-model="controller.nyKey" required>
+                    </div>
+                </div>
+
                 <!-- <div class="form-group">
                     <label for="inputPrivateKey" class="col-sm-3 control-label">Authenticate with signature (HMAC)</label>
                     <div class="col-sm-8">
@@ -59,8 +107,8 @@
                     <div class="col-sm-8">
                         <input id="inputPrivateKey" class="form-control" placeholder="Your private key" type="text" ng-model="controller.pk" ng-required="controller.signature">
                     </div>
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                     <label class="col-sm-3 control-label">Specific headers</label>
                     <div class="col-sm-8" style="margin-top: 6px;">
                         <a href="#" ng-click="controller.addHeader()">Add header</a>
@@ -83,13 +131,21 @@
                         <button style="padding: 0px;width: 23px; border-radius: 20px;" class="btn btn-danger"
                                 ng-click="controller.removeHeader(index)">✕</button>
                     </div>
-                </div>  -->
+                </div> -->
+
+                <!-- <div class="form-group">
+                  <label for="inputHeader" class="col-sm-3 control-laber">Twitter Authorization Header</label>
+                  <div class="col-sm-8">
+                    <textarea id="inputHeader" placeholder="Add your Twitter Authorization Header for the Twitter URL here..." class="form-control" rows="3"></textarea>
+                  </div>
+                </div> -->
             </form>
 
 
             <div class="pull-right">
+                <!-- ng-disabled="streamdataForm.$invalid" -->
                 <button type="button" class="btn btn-success" ng-click="controller.connect()"
-                        ng-show="!controller.isConnected" ng-disabled="streamdataForm.$invalid" style="margin-right: 25px;">Connect</button>
+                        ng-show="!controller.isConnected" style="margin-right: 25px;">Connect</button>
                 <button type="button" class="btn btn-danger" ng-click="controller.disconnect()"
                         ng-show="controller.isConnected" style="margin-right: 25px;">
                     Disconnect</button>
@@ -103,6 +159,7 @@
                     <ul class="nav nav-tabs">
                         <li ng-class="{active:controller.isSet(1)}" ng-show="originData">
                             <a href ng-click="controller.setTab(1)">Origin data</a>
+
                         </li>
                         <li ng-class="{active:controller.isSet(2)}" ng-show="datasStringify">
                             <a href ng-click="controller.setTab(2)">Patched JSON document</a>
@@ -129,6 +186,7 @@
                     </ul>
                 </div>
 
+
                 <!-- Patched JSON Array -->
                 <!-- <div class="row" ng-show="controller.isSet(1) && datasArray.length" style="overflow: auto;"
                      ng-class="{disabled : controller.isPatching}">
@@ -146,7 +204,7 @@
                     </table>
                 </div> -->
                 <div class="row" style="height: 500px" ng-show="controller.isSet(1)" ng-class="{disabled : controller.isPatching}">
-                    <pre style="height: 100%;" bind-html-unsafe="originData"></pre>
+                      <json-formatter json="originData" open="1"></json-formatter>
                 </div>
 
                 <!-- Patched JSON Document -->
@@ -156,24 +214,28 @@
 
                 <!-- JSON Patch Operations -->
                 <div class="row" style="height: 500px" ng-show="controller.isSet(3)" ng-class="{disabled : controller.isPatching}">
-                    <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify1"></pre>
+                      <json-formatter json="patchStringify1" open="1"></json-formatter>
                 </div>
                 <div class="row" style="height: 500px" ng-show="controller.isSet(4)" ng-class="{disabled : controller.isPatching}">
-                    <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify2"></pre>
+                    <!-- <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify2"></pre> -->
+                    <json-formatter json="patchStringify2" open="1"></json-formatter>
                 </div>
                 <div class="row" style="height: 500px" ng-show="controller.isSet(5)" ng-class="{disabled : controller.isPatching}">
-                    <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify3"></pre>
+                    <!-- <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify3"></pre> -->
+                    <json-formatter json="patchStringify3" open="1"></json-formatter>
                 </div>
                 <div class="row" style="height: 500px" ng-show="controller.isSet(6)" ng-class="{disabled : controller.isPatching}">
-                    <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify4"></pre>
+                    <!-- <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify4"></pre> -->
+                    <json-formatter json="patchStringify4" open="1"></json-formatter>
                 </div>
                 <div class="row" style="height: 500px" ng-show="controller.isSet(7)" ng-class="{disabled : controller.isPatching}">
-                    <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify5"></pre>
+                    <!-- <pre id="patchCtn" style="height: 100%;" bind-html-unsafe="patchStringify5"></pre> -->
+                    <json-formatter json="patchStringify5" open="1"></json-formatter>
                 </div>
             </section>
 
             <div class="footer">
-                <p>suppoert from the <a href="http://streamdata.io/" target="_blank">streamdata.io</a> team</p>
+                <p>based on the <a href="https://github.com/streamdataio/twitter-demo" target="_blank"> twitter demo </a> of <a href="http://streamdata.io/" target="_blank">streamdata.io</a></p>
                 <!-- <div style="font-size: 0.8em; float: right;">
                     Icons made by <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
                 </div> -->
@@ -200,6 +262,14 @@
         <script type="text/javascript" src="bower_components/json8-patch/JSON8Patch.js"></script>
         <script type="text/javascript" src="bower_components/rfc6902/rfc6902.min.js"></script>
         <script type="text/javascript" src="bower_components/async-polling/dist/async-polling.min.js"></script>
+
+        <script src="bower_components/ng-twitter-api/dist/ng-twitter-api.min.js"></script>
+        <script src="bower_components/jsSHA/src/sha1.js"></script>
+        <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+        <script type="text/javascript" src="bower_components/codebird-js/codebird.js"></script>
+        <script type="text/javascript" src="bower_components/json-formatter/dist/json-formatter.js"></script>
+        <link rel="stylesheet" href="bower_components/json-formatter/dist/json-formatter.min.css"></div>
+
 
         <script src="scripts/difflib.js"></script>
         <script src="scripts/diffview.js"></script>

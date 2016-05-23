@@ -12,3 +12,12 @@ This demo is visible online at <a href="http://angular-streamdataiodemo.rhcloud.
 
 Enjoy!
 # client-angular
+
+// $.ajax({
+//   url : "https://api.twitter.com/1.1/statuses/user_timeline.json",
+//   method : 'GET',
+//   headers: {
+//       'Authorization':'OAuth oauth_consumer_key="3bslD2ptMQ9vhaBOURUGlPEIu", oauth_nonce="b11fab01f379281cada608b4c2d158ac", oauth_signature="VpWZXbr74U%2B5t2B6Kx%2BaJcG1mD8%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1462952987", oauth_token="1881073466-iLytONO2likj7qKuCNeVGm18DoFpmhSJL1xhGo8", oauth_version="1.0"',
+//       'Content-Type':'application/json'
+//   }
+// });
