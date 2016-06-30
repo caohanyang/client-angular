@@ -48,10 +48,10 @@
                 name: 'Xignite',
                 url: 'https://globalcurrencies.xignite.com/xGlobalCurrencies.json/GetRealTimeRates?Symbols=EURUSD,USDGBP,EURJPY,CHFDKK'
               },
-              {
-                name: 'Twitter',
-                url: 'https://api.twitter.com/1.1/statuses/user_timeline.json'
-              },
+              // {
+              //   name: 'Twitter',
+              //   url: 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+              // },
               {
                 name: 'nyTimes',
                 url: 'http://api.nytimes.com/svc/news/v3/content/all/all.json'
@@ -65,7 +65,7 @@
             vm.accessToken = '1881073466-iLytONO2likj7qKuCNeVGm18DoFpmhSJL1xhGo8';
             vm.accessTokenSecret = 'IWTzZeasxY74TOpWiY7w3WKahahBiGqgS5qUzjZsdjFRC';
             vm.nyKey = 'a4c18d60a676da3df3e770435f39bd44:17:74140094';
-            vm.xigniteToken = '9E68A32E39194B23BF06F16A0E16DEAB';
+            vm.xigniteToken = '34A251C4EED44C5494382ABA4B094480';
         };
 
         vm.addHeader = function () {
@@ -86,7 +86,7 @@
         }
 
 
-        function pollingRequest () {
+        function pollingRequest (interval) {
           var polling =  AsyncPolling(function (end) {
             // vm.headers.push('Access-Control-Allow-Origin:*');
             // vm.headers.push('Access-Control-Allow-Methods:GET, PUT, POST, DELETE, OPTIONS');
@@ -175,7 +175,7 @@
             // Then notify the polling when your job is done:
             end();
             // This will schedule the next call.
-          }, 15000).run();
+          }, interval).run();
         }
 
         vm.connect = function () {
@@ -318,17 +318,17 @@
 
               case "Xignite":
                   vm.url = vm.urls.url + '&_token=' + vm.xigniteToken;
-                  pollingRequest();
+                  pollingRequest(15000);
                   break;
 
               case "nyTimes":
                   vm.url = vm.urls.url + '?api-key=' + vm.nyKey;
-                  pollingRequest();
+                  pollingRequest(10000);
                   break;
 
               case "Stackoverflow":
                   vm.url = vm.urls.url;
-                  pollingRequest();
+                  pollingRequest(15000);
                   break;
 
 

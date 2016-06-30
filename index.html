@@ -30,6 +30,15 @@
             </div>
 
             <form class="form-horizontal" name="streamdataForm" style="margin-bottom: 30px;">
+               <div class="form-group" >
+                  <label for="Note" class="col-sm-3 control-label">Note</label>
+                  <div class="col-sm-8">
+                      <p>Please install <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en" target="_blank">Chrome extension</a> first.</p>
+                      <p>Then enable cross-origin resource sharing button in the extension configuration.</p>
+                      <p>Wait 15 seconds to see the patch (Polling interval: 15 seconds).</p>
+                  </div>
+               </div>
+
                 <div class="form-group">
                   <label for="inputUrl" class="col-sm-3 control-label">Select URL</label>
                   <div class="col-sm-8">
@@ -70,13 +79,6 @@
                 </div>
 
                 <div class="form-group" ng-show="controller.urls.name=='Xignite'">
-                    <label for="xigniteToken" class="col-sm-3 control-label">Xignite note</label>
-                    <div class="col-sm-8">
-                        <p>Please install <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en" target="_blank">Chrome extension</a> first </p>
-                    </div>
-                </div>
-
-                <div class="form-group" ng-show="controller.urls.name=='Xignite'">
                     <label for="xigniteToken" class="col-sm-3 control-label">API token</label>
                     <div class="col-sm-8">
                         <input id="xigniteToken" class="form-control" placeholder="Your API Token" type="text" ng-model="controller.xigniteToken" required>
@@ -84,11 +86,14 @@
                 </div>
 
 
-
                 <div class="form-group" ng-show="controller.urls.name=='nyTimes'">
                     <label for="nyKey" class="col-sm-3 control-label">API Key</label>
                     <div class="col-sm-8">
                         <input id="nyKey" class="form-control" placeholder="Your API Key" type="text" ng-model="controller.nyKey" required>
+                    </div>
+                    <label for="Note" class="col-sm-3 control-label">nyTimes Note</label>
+                    <div class="col-sm-8">
+                        <p>You might wait longer time (5 minutes or more) to see the modifications of articles in New York times.</p>
                     </div>
                 </div>
 
